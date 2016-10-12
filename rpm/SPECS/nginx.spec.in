@@ -302,35 +302,17 @@ if [ $1 -ge 1 ]; then
 fi
 
 %changelog
-* Mon Oct 10 2016 Andrei Belov <defan@nginx.com>
-- 1.11.5
-
-* Tue Sep 13 2016 Konstantin Pavlov <thresh@nginx.com>
-- 1.11.4.
-- njs updated to 0.1.2.
-
-* Tue Jul 26 2016 Konstantin Pavlov <thresh@nginx.com>
-- 1.11.3.
-- njs updated to 0.1.0.
-- njs stream dynamic module added to nginx-module-njs package.
-- geoip stream dynamic module added to nginx-module-geoip package.
-
-* Tue Jul  5 2016 Konstantin Pavlov <thresh@nginx.com>
-- 1.11.2
-- njs updated to ef2b708510b1.
-
 * Tue May 31 2016 Konstantin Pavlov <thresh@nginx.com>
-- 1.11.1
+- 1.10.1
 
-* Wed May 24 2016 Sergey Budnevitch <sb@nginx.com>
-- Fixed logrotate error if nginx is not running
-- 1.11.0
+* Tue Apr 26 2016 Konstantin Pavlov <thresh@nginx.com>
+- 1.10.0
 
 * Tue Apr 19 2016 Konstantin Pavlov <thresh@nginx.com>
 - 1.9.15
 - njs updated to 1c50334fbea6.
 
-* Tue Apr  5 2016 Konstantin Pavlov <thresh@nginx.com>
+* Tue Apr 05 2016 Konstantin Pavlov <thresh@nginx.com>
 - 1.9.14
 
 * Tue Mar 29 2016 Konstantin Pavlov <thresh@nginx.com>

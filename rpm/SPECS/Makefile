@@ -1,6 +1,6 @@
 SHELL=		/bin/bash
 
-BASE_VERSION=	1.11.5
+BASE_VERSION=	1.10.1
 BASE_RELEASE=	1
 BASE_SRC=	nginx-$(BASE_VERSION).tar.gz
 SRCPATH?=	../SOURCES
@@ -17,19 +17,20 @@ MODULE_VERSION_geoip=		$(BASE_VERSION)
 MODULE_RELEASE_geoip=		1
 MODULE_VERSION_image_filter=	$(BASE_VERSION)
 MODULE_RELEASE_image_filter=	1
-MODULE_VERSION_njs=		0.1.3
+MODULE_SHAID_njs=		1c50334fbea6
+MODULE_VERSION_njs=		0.0.20160414.$(MODULE_SHAID_njs)
 MODULE_RELEASE_njs=		1
 MODULE_VERSION_perl=		$(BASE_VERSION)
 MODULE_RELEASE_perl=		1
 MODULE_VERSION_xslt=		$(BASE_VERSION)
 MODULE_RELEASE_xslt=		1
 
-MODULE_SOURCES_njs=		njs-$(MODULE_VERSION_njs).tar.gz
+MODULE_SOURCES_njs=		njs-$(MODULE_SHAID_njs).tar.gz
 
 MODULE_CONFARGS_geoip=		--with-http_geoip_module=dynamic \
 				--with-stream_geoip_module=dynamic
 MODULE_CONFARGS_image_filter=	--with-http_image_filter_module=dynamic
-MODULE_CONFARGS_njs=		--add-dynamic-module=njs-$(MODULE_VERSION_njs)/nginx
+MODULE_CONFARGS_njs=		--add-dynamic-module=njs-$(MODULE_SHAID_njs)/nginx
 MODULE_CONFARGS_perl=		--with-http_perl_module=dynamic
 MODULE_CONFARGS_xslt=		--with-http_xslt_module=dynamic
 
@@ -97,7 +98,7 @@ export MODULE_POST_image_filter
 MODULE_VERSION_PREFIX_njs=$(BASE_VERSION).
 
 define MODULE_PREINSTALL_njs
-%{__install} -m644 %{bdir}/njs-$(MODULE_VERSION_njs)/README \
+%{__install} -m644 %{bdir}/njs-$(MODULE_SHAID_njs)/README \
     $$RPM_BUILD_ROOT%{_datadir}/doc/nginx-module-njs/
 endef
 export MODULE_PREINSTALL_njs
@@ -214,9 +215,9 @@ BASE_CONFIGURE_ARGS=\
 	--http-scgi-temp-path=%{_localstatedir}/cache/nginx/scgi_temp \
 	--user=%{nginx_user} \
 	--group=%{nginx_group} \
-	--with-compat \
 	--with-file-aio \
 	--with-threads \
+	--with-ipv6 \
 	--with-http_addition_module \
 	--with-http_auth_request_module \
 	--with-http_dav_module \
@@ -235,9 +236,7 @@ BASE_CONFIGURE_ARGS=\
 	--with-mail \
 	--with-mail_ssl_module \
 	--with-stream \
-	--with-stream_realip_module \
-	--with-stream_ssl_module \
-	--with-stream_ssl_preread_module
+	--with-stream_ssl_module
 
 export CR=\\n
 
